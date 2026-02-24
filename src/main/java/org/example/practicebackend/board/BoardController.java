@@ -22,7 +22,7 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity list(@RequestBody BoardDto.Req dto){
+    public ResponseEntity list(){
         List<BoardDto.Res> boardlist =  boardService.list();
         return ResponseEntity.ok(boardlist);
     }
