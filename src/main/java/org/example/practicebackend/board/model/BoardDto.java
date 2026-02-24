@@ -6,7 +6,7 @@ import lombok.Getter;
 public class BoardDto {
 
     @Builder
-    public static class RegisterReq{
+    public static class Req{
         private String title;
         private String content;
 
@@ -20,9 +20,17 @@ public class BoardDto {
 
     @Getter
     @Builder
-    public static class RegisterRes{
+    public static class Res{
         private Long idx;
         private String title;
         private String content;
+
+        public static Res from(Board entity) {
+            return Res.builder()
+                    .idx(entity.getIdx())
+                    .title(entity.getTitle())
+                    .content(entity.getContent())
+                    .build();
+        }
     }
 }
