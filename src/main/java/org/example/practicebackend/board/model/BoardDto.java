@@ -8,12 +8,12 @@ public class BoardDto {
     @Builder
     public static class RegisterReq{
         private String title;
-        private String contents;
+        private String content;
 
         public Board toEntity(){
             return Board.builder()
                     .title(this.title)
-                    .contents(this.contents)
+                    .content(this.content)
                     .build();
         }
     }
@@ -23,6 +23,6 @@ public class BoardDto {
     public static class RegisterRes{
         private Long idx;
         private String title;
-        private String contents;
+        private String content;
     }
 }
