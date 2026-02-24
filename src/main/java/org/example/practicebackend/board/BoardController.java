@@ -26,4 +26,10 @@ public class BoardController {
         List<BoardDto.Res> boardlist =  boardService.list();
         return ResponseEntity.ok(boardlist);
     }
+
+    @GetMapping("/detail/{idx}")
+    public ResponseEntity detail(@PathVariable Long idx){
+        BoardDto.Res board = boardService.detail(idx);
+        return ResponseEntity.ok(board);
+    }
 }
