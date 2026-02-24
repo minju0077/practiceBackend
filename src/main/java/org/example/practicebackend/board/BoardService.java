@@ -5,6 +5,7 @@ import org.example.practicebackend.board.model.BoardDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,5 +24,15 @@ public class BoardService {
     public List<BoardDto.Res> list() {
         List<Board> boardList = boardRepository.findAll();
         return boardList.stream().map(BoardDto.Res::from).toList();
+    }
+
+    public BoardDto.Res detail(Long idx) {
+        Optional<Board> result = boardRepository.findById(idx);
+
+        if(result.isPresent()){
+            Board board = result.get();
+            return BoardDto.Res.from(board);
+        }
+        return null;
     }
 }
