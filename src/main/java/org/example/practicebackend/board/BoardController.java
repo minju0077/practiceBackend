@@ -2,12 +2,9 @@ package org.example.practicebackend.board;
 
 import org.example.practicebackend.board.model.BoardDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 @RestController
 public class BoardController {
     private final BoardService boardService;
@@ -16,7 +13,7 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-    @GetMapping("/register")
+    @PostMapping("/register")
     public ResponseEntity register(@RequestBody BoardDto.RegisterReq dto){
         boardService.register(dto);
         return ResponseEntity.ok("성공");
